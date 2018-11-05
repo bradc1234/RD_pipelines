@@ -109,7 +109,7 @@ rule all_indiv_merge_trim:
 rule indiv_merge_trim:
     input: "all_resolved_calls/all_resolved_calls.gz"
     output: "merge_trim/{indiv}.tab"
-    params: sd_gap=config[REFERENCE]["segdup_gaps"], mask_bed=config[REFERENCE]["mask_bed"], dts_prefix=DTS_DIR+"/"+DTS_PREFIX
+    params: sd_gap=config[REFERENCE]["segdup_gaps"], mask_bed=config[REFERENCE]["mask_bed"], dts_prefix=DTS_DIR+"/"+DTS_PREFIX, sge_opts="-l mfree=10G -l h_rt=4:00:00"
     shell:
         "module purge; "
         "module load modules modules-init modules-gs/prod modules-eichler/prod anaconda/201710 R/3.0.0; "
